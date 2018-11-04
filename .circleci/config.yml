@@ -58,10 +58,6 @@ jobs:
           name: run tests
           command: rspec
 
-      - run:
-          name: lint
-          command: "gem install rubocop && rubocop --fail-level error"
-
 workflows:
   version: 2
   build_and_test:
