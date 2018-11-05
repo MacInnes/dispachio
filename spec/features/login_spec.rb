@@ -14,10 +14,10 @@ feature 'An unregistered user' do
     fill_in :user_username, with: 'MacInnes'
     fill_in :user_email, with: 'test@test.com'
     fill_in :user_password, with: 'password'
-    select :Dispatch, from: :user_role
+    select :dispatcher, from: :user_role
     click_on('Submit')
 
-    expect(current_path).to eq('/dispatch')
+    expect(current_path).to eq('/dispatcher')
     expect(page).to have_content('Logged in as MacInnes')
 
     # I receive an email including my API key.

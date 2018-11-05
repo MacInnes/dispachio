@@ -8,7 +8,7 @@ describe 'User registration' do
       username: username,
       email: 'test@test.com',
       password: 'asdf',
-      role: 'Dispatcher'
+      role: 'dispatcher'
     }
 
     post '/api/v1/users', params: payload

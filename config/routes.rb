@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get '/register', to: 'register#new'
 
+  get 'dispatcher', to: 'dispatch#index'
+
   resources :users, only: [:create]
 
   namespace :api do

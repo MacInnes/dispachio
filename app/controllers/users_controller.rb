@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
+      session[:id] = user.id
       redirect_to "/#{user.role}"
     else
       # flash message
