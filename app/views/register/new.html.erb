@@ -9,7 +9,7 @@
   <%= f.password_field :password %>
 
   <%= f.label :role %>
-  <%= f.select :role, [["Dispatch", 1], ["Driver", 0]] %>
+  <%= f.select :role, ["Dispatcher", "Driver"] %>
 
   <%= f.submit "Submit" %>
 <% end %>

@@ -3,6 +3,6 @@ FactoryBot.define do
     username {"MacInnes"}
     email {"test@test.com"}
     password {"password"}
-    role {1}
+    role {"Dispatcher"}
   end
 end
