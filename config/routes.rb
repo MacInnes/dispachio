@@ -4,4 +4,10 @@ Rails.application.routes.draw do
   get '/register', to: 'register#new'
 
   resources :users, only: [:create]
+
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:create]
+    end
+  end
 end
