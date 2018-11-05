@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'dispatcher', to: 'dispatch#index'
 
+  get '/driver', to: 'driver#index'
+
   resources :users, only: [:create]
 
   namespace :api do
