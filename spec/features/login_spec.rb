@@ -50,6 +50,6 @@ feature 'An unregistered user' do
     click_on('Submit')
 
     expect(current_path).to eq('/register')
-
+    expect(page).to have_content('Invalid registration details.')
   end
 end
