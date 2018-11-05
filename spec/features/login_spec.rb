@@ -11,10 +11,10 @@ feature 'An unregistered user' do
 
     expect(current_path).to eq('/register')
 
-    fill_in :username, with: 'MacInnes'
-    fill_in :email, with: 'test@test.com'
-    fill_in :password, with: 'password'
-    select :Dispatch, from: :role
+    fill_in :user_username, with: 'MacInnes'
+    fill_in :user_email, with: 'test@test.com'
+    fill_in :user_password, with: 'password'
+    select :Dispatch, from: :user_role
     click_on('Submit')
 
     expect(current_path).to eq('/dispatch')

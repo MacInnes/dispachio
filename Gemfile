@@ -21,6 +21,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -31,7 +32,6 @@ end
 group :test do
   gem 'capybara'
   gem 'capybara-email'
-  gem 'factory_bot_rails'
   gem 'shoulda-matchers'
   gem 'launchy'
   gem 'simplecov'

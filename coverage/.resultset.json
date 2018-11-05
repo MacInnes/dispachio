@@ -1,0 +1,16 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/macinnes/Turing/three_module/dispachio/app/models/user.rb": [
+        1,
+        null
+      ],
+      "/Users/macinnes/Turing/three_module/dispachio/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ]
+    },
+    "timestamp": 1541377444
+  }
+}
