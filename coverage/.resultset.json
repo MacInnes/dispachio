@@ -1,6 +1,19 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/macinnes/Turing/three_module/dispachio/spec/models/user_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/macinnes/Turing/three_module/dispachio/app/models/user.rb": [
         1,
         null
@@ -9,8 +22,50 @@
         1,
         1,
         null
+      ],
+      "/Users/macinnes/Turing/three_module/dispachio/app/controllers/welcome_controller.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/macinnes/Turing/three_module/dispachio/app/controllers/application_controller.rb": [
+        1,
+        null
+      ],
+      "/Users/macinnes/Turing/three_module/dispachio/app/controllers/register_controller.rb": [
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/macinnes/Turing/three_module/dispachio/app/controllers/users_controller.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
       ]
     },
-    "timestamp": 1541377444
+    "timestamp": 1541380048
   }
 }

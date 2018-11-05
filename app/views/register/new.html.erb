@@ -8,5 +8,8 @@
   <%= f.label :password %>
   <%= f.password_field :password %>
 
-  <%= f.submit %>
+  <%= f.label :role %>
+  <%= f.select :role, [["Dispatch", 1], ["Driver", 0]] %>
+
+  <%= f.submit "Submit" %>
 <% end %>

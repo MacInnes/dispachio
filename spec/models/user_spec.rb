@@ -6,6 +6,6 @@ describe User do
 
     expect(user.username).to eq('MacInnes')
     expect(user.email).to eq('test@test.com')
-    expect(user.role).to eq('dispatcher')
+    expect(user.role).to eq('Dispatcher')
   end
 end
