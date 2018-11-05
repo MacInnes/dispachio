@@ -6,7 +6,7 @@ class Api::V1::UsersController < ActionController::API
       user.generate_api_key
       render json: {api_key: user.api_key}
     else
-      render json: {status: 400, message: "Invalid request"}
+      render status: 400, json: {message: "Invalid request"}
     end
   end
 

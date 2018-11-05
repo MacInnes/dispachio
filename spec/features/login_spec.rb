@@ -41,4 +41,15 @@ feature 'An unregistered user' do
     expect(current_path).to eq('/driver')
     expect(page).to have_content('Logged in as MacInnes')
   end
+
+  scenario 'creates an invalid account' do
+    visit '/register'
+
+    fill_in :user_username, with: 'MacInnes'
+    select :driver, from: :user_role
+    click_on('Submit')
+
+    expect(current_path).to eq('/register')
+
+  end
 end
