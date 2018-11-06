@@ -1,21 +1,24 @@
-function loop() {
-  console.log(api_key);
-  console.log(driver_id);
-  getDestination();
-  setInterval(loop, 10000);
-}
-
 function getDestination(){
+  console.log('updating...')
   $.ajax({
     dataType: "json",
     url: '/api/v1/drivers/' + driver_id + '/destination',
     headers: {
       'X-API-KEY': api_key
     },
+    ifModified: true,
     success: function(data){
-      $('#driver-iframe').attr('src', data.data.attributes.formatted_destination)
+      if (data){
+        var new_destination = data.data.attributes.formatted_destination
+        $('#driver-iframe').attr('src', new_destination)
+      }
+    },
+    error: function(){
+      console.log('error occurred!!')
     }
   });
-}
+};
 
-loop();
+getDestination();
+
+setInterval(getDestination, 10000);
