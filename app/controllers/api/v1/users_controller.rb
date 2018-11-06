@@ -3,7 +3,7 @@ class Api::V1::UsersController < ActionController::API
   def create
     user = User.new(user_params)
     if user.save
-      user.generate_api_key
+      user_setup(user)
       render json: {api_key: user.api_key}
     else
       render status: 400, json: {message: "Invalid request"}
@@ -12,8 +12,18 @@ class Api::V1::UsersController < ActionController::API
 
   private
 
-    def user_params
-      params.permit(:username, :email, :password, :role)
-    end
+  def user_params
+    params.permit(:username, :email, :password, :role)
+  end
+
+  def send_api_key(user)
+    RegistrationNotifierMailer.send_key(user).deliver_now
+  end
+
+  def user_setup(user)
+    user.generate_api_key
+    session[:id] = user.id
+    send_api_key(user)
+  end
 
 end
