@@ -1,6 +1,11 @@
 <% if current_user.formatted_destination %>
-  <iframe src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&q=<%= current_user.formatted_destination %>" width="600" height="800"></iframe>
+  <iframe id="driver-iframe" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&q=<%= current_user.formatted_destination %>" width="600" height="800"></iframe>
 <% else %>
 <% end %>
+
+<script type="text/javascript">
+  window.api_key = "<%= current_user.api_key %>";
+  window.driver_id = "<%= current_user.id %>";
+</script>
 
 <%= javascript_include_tag 'driver' %>
