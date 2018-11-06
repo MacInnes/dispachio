@@ -1,5 +1,4 @@
 function getDestination(){
-  console.log('updating...')
   $.ajax({
     dataType: "json",
     url: '/api/v1/drivers/' + driver_id + '/destination',
