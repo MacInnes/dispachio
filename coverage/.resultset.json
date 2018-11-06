@@ -32,7 +32,7 @@
         1,
         null,
         1,
-        5,
+        7,
         null,
         null
       ],
@@ -44,6 +44,22 @@
       "/Users/macinnes/Turing/three_module/dispachio/spec/requests/api/v1/requests/driver_destination_spec.rb": [
         1,
         null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
         1,
         1,
         1,
@@ -194,18 +210,18 @@
         1,
         null,
         1,
-        1,
-        1,
-        null,
-        0,
-        null,
-        null,
-        null,
+        2,
         1,
         null,
         1,
+        null,
+        null,
+        null,
         1,
+        null,
         1,
+        2,
+        2,
         null,
         null,
         null
@@ -252,6 +268,6 @@
         null
       ]
     },
-    "timestamp": 1541478587
+    "timestamp": 1541478758
   }
 }
