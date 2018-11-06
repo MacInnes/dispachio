@@ -13,6 +13,8 @@ class Api::V1::DriverController < ActionController::API
       @user = User.find(params[:id])
       @user.update(destination: params[:destination])
       render json: DriverSerializer.new(@user).serialized_json
+    else
+      render status: 403, json: {message: "Unathorized"}
     end
   end
 

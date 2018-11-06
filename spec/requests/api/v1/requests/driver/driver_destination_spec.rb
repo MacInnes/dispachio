@@ -30,4 +30,22 @@ describe 'Driver' do
     expect(response.status).to eq(403)
     expect(body[:message]).to eq("Unauthorized")
   end
+
+  it "can't update a destination" do
+    driver_1 = create(:user, role: 'driver')
+    driver_1.generate_api_key
+
+    new_destination = '6219 Willow Lane, Boulder, CO 80301'
+    headers = { "CONTENT_TYPE" => "application/json", "X-API-KEY" => driver_1.api_key }
+    payload = {
+      destination: new_destination
+    }
+
+    post "/api/v1/drivers/#{driver_1.id}/destination", headers: headers, params: payload.to_json
+
+    body = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response.status).to eq(403)
+    expect(body[:message]).to eq("Unathorized")
+  end
 end
