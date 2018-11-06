@@ -12,7 +12,9 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require_tree .
 //= require jquery3
-//= require jquery_ujs
 //= require jquery-ui
+
+$(document).ready(function(){
+  console.log("It's alive!")
+})
