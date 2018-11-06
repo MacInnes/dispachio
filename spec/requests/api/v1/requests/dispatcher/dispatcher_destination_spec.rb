@@ -33,9 +33,17 @@ describe 'Dispatcher' do
       destination: new_destination
     }
 
-    post "/api/v1/drivers/#{driver.id}/destination", params: payload
+    post "/api/v1/drivers/#{driver.id}/destination", headers: headers, params: payload.to_json
+
+    post_body = JSON.parse(response.body, symbolize_names: true)
+    expect(response.status).to eq(200)
+
+    driver_headers = { "CONTENT_TYPE" => "application/json", "X-API-KEY" => driver.api_key }
+
+    get "/api/v1/drivers/#{driver.id}/destination", headers: driver_headers
+    body = JSON.parse(response.body, symbolize_names: true)
 
     expect(response.status).to eq(200)
-    expect(driver.destination).to eq(new_destination)
+    expect(body[:data][:attributes][:destination]).to eq(new_destination)
   end
 end
