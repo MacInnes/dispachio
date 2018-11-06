@@ -92,7 +92,7 @@
         1,
         null,
         1,
-        12,
+        10,
         null,
         null,
         null
@@ -115,6 +115,7 @@
         2,
         2,
         2,
+        2,
         null,
         1,
         null,
@@ -126,6 +127,26 @@
         3,
         null,
         null,
+        1,
+        2,
+        null,
+        null,
+        null
+      ],
+      "/Users/macinnes/Turing/three_module/dispachio/app/mailers/registration_notifier_mailer.rb": [
+        1,
+        null,
+        1,
+        2,
+        2,
+        null,
+        null,
+        null
+      ],
+      "/Users/macinnes/Turing/three_module/dispachio/app/mailers/application_mailer.rb": [
+        1,
+        1,
+        1,
         null
       ],
       "/Users/macinnes/Turing/three_module/dispachio/app/controllers/dispatch_controller.rb": [
@@ -168,6 +189,6 @@
         null
       ]
     },
-    "timestamp": 1541462300
+    "timestamp": 1541464365
   }
 }
