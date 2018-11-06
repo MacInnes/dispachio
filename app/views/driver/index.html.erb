@@ -1,4 +1,4 @@
-<% if current_user.destination %>
+<% if current_user.formatted_destination %>
   <iframe src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&q=<%= current_user.formatted_destination %>" width="600" height="800"></iframe>
 <% else %>
 <% end %>
