@@ -14,7 +14,3 @@
 //= require activestorage
 //= require jquery3
 //= require jquery-ui
-
-$(document).ready(function(){
-  console.log("It's alive!")
-})
