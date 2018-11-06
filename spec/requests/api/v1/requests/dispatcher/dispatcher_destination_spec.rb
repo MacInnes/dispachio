@@ -14,6 +14,28 @@ describe 'Dispatcher' do
     body = JSON.parse(response.body, symbolize_names: true)
 
     expect(response.status).to eq(200)
-    expect(body[:data][:attributes][:formatted_destination]).to eq("https://www.google.com/maps/embed/v1/place?key=#{ENV['GOOGLE_MAPS_API_KEY']}&q=1331+17th+Street,+Denver,+CO,+80202")
+    expect(body[:data][:attributes][:formatted_destination]).to eq("https://www.google.com/maps/embed/v1/place?key=#{ENV['GOOGLE_MAPS_API_KEY']}&q=1331+17th+Street,+Denver,+CO+80202")
+  end
+
+  it "can update a driver's destination" do
+    driver = create(:user, role: 'driver')
+    dispatcher = create(:user, role: 'dispatcher')
+    driver.generate_api_key
+    dispatcher.generate_api_key
+
+    headers = { "CONTENT_TYPE" => "application/json", "X-API-KEY" => dispatcher.api_key }
+
+    expect(driver.destination).to eq('1331 17th Street, Denver, CO 80202')
+
+    new_destination = '6219 Willow Lane, Boulder, CO 80301'
+
+    payload = {
+      destination: new_destination
+    }
+
+    post "/api/v1/drivers/#{driver.id}/destination", params: payload
+
+    expect(response.status).to eq(200)
+    expect(driver.destination).to eq(new_destination)
   end
 end

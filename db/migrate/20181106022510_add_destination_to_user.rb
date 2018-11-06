@@ -1,5 +1,5 @@
 class AddDestinationToUser < ActiveRecord::Migration[5.2]
   def change
-    add_column :users, :destination, :string
+    add_column :users, :destination, :string, :default => "1331 17th Street, Denver, CO 80202"
   end
 end

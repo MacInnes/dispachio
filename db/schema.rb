@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2018_11_06_022510) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "api_key"
-    t.string "destination"
+    t.string "destination", default: "1331 17th Street, Denver, CO 80202"
   end
 
 end
