@@ -41,6 +41,22 @@
         1,
         null
       ],
+      "/Users/macinnes/Turing/three_module/dispachio/spec/requests/api/v1/requests/driver_destination_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/macinnes/Turing/three_module/dispachio/spec/requests/api/v1/requests/user_registration_spec.rb": [
         1,
         null,
@@ -141,8 +157,8 @@
         1,
         null,
         1,
-        2,
-        2,
+        3,
+        3,
         null,
         null,
         null
@@ -171,6 +187,26 @@
         null,
         null
       ],
+      "/Users/macinnes/Turing/three_module/dispachio/app/controllers/api/v1/driver_controller.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/macinnes/Turing/three_module/dispachio/app/serializers/driver_serializer.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/macinnes/Turing/three_module/dispachio/app/controllers/api/v1/users_controller.rb": [
         1,
         null,
@@ -190,9 +226,19 @@
         2,
         null,
         null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
         null
       ]
     },
-    "timestamp": 1541467830
+    "timestamp": 1541476440
   }
 }

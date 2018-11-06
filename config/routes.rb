@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create]
+      get '/drivers/:id/destination', to: 'driver#show'
     end
   end
 end
