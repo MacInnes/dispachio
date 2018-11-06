@@ -12,7 +12,7 @@ describe 'Driver' do
     body = JSON.parse(response.body, symbolize_names: true)
 
     expect(response.status).to eq(200)
-    expect(body[:data][:attributes][:formatted_destination]).to eq('1331+17th+St,+Denver,+CO,+80202')
+    expect(body[:data][:attributes][:formatted_destination]).to eq("https://www.google.com/maps/embed/v1/place?key=#{ENV['GOOGLE_MAPS_API_KEY']}&q=1331+17th+St,+Denver,+CO,+80202")
   end
 
   it "can't access another driver's destination" do

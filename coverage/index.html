@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-11-05T21:32:39-07:00">2018-11-05T21:32:39-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-11-05T22:07:35-07:00">2018-11-05T22:07:35-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">100.0%</span></span>
+    (<span class="covered_percent"><span class="green">97.64%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.34
+         1.3
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>16</b> files in total.
-    <b>122</b> relevant lines. 
-    <span class="green"><b>122</b> lines covered</span> and
-    <span class="red"><b>0</b> lines missed </span>
+    <b>127</b> relevant lines. 
+    <span class="green"><b>124</b> lines covered</span> and
+    <span class="red"><b>3</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -77,7 +77,7 @@
         <td>4</td>
         <td>4</td>
         <td>0</td>
-        <td>3.3</td>
+        <td>3.5</td>
       </tr>
       
       <tr>
@@ -162,20 +162,20 @@
       
       <tr>
         <td class="strong"><a href="#1eb7e333a06f9f068d82bd3b63c02783bfb0149c" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>11</td>
-        <td>6</td>
-        <td>6</td>
-        <td>0</td>
-        <td>2.0</td>
+        <td class="red strong">70.0 %</td>
+        <td>17</td>
+        <td>10</td>
+        <td>7</td>
+        <td>3</td>
+        <td>1.3</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#bc744ad59ea4ff72205ce04dee0f891fb5c5740e" class="src_link" title="app/serializers/driver_serializer.rb">app/serializers/driver_serializer.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>8</td>
-        <td>5</td>
-        <td>5</td>
+        <td>9</td>
+        <td>6</td>
+        <td>6</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -590,8 +590,8 @@
           <code class="ruby">  def current_user</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="6">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="11" data-linenumber="6">
+          <span class="hits">11</span>
           
           <code class="ruby">    @current_user ||= User.find_by(id: session[:id])</code>
         </li>
@@ -1200,11 +1200,11 @@
         <div class="source_table" id="1eb7e333a06f9f068d82bd3b63c02783bfb0149c">
   <div class="header">
     <h3>app/models/user.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
+    <h4><span class="red">70.0 %</span> covered</h4>
     <div>
-      <b>6</b> relevant lines. 
-      <span class="green"><b>6</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <b>10</b> relevant lines. 
+      <span class="green"><b>7</b> lines covered</span> and
+      <span class="red"><b>3</b> lines missed.</span>
     </div>
   </div>
   
@@ -1274,6 +1274,42 @@
         <li class="never" data-hits="" data-linenumber="11">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="12">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def formatted_destination</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="13">
+          
+          
+          <code class="ruby">    binding.pry</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="14">
+          
+          
+          <code class="ruby">    uri = self.destination.gsub(/ /, &#39;+&#39;)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="15">
+          
+          
+          <code class="ruby">    &quot;https://www.google.com/maps/place?key=#{ENV[&#39;GOOGLE_MAPS_API_KEY&#39;]}&amp;#{uri}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="16">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="17">
+          
+          
           <code class="ruby">end</code>
         </li>
       
@@ -1287,8 +1323,8 @@
     <h3>app/serializers/driver_serializer.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>5</b> relevant lines. 
-      <span class="green"><b>5</b> lines covered</span> and
+      <b>6</b> relevant lines. 
+      <span class="green"><b>6</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1329,16 +1365,22 @@
         <li class="covered" data-hits="1" data-linenumber="6">
           <span class="hits">1</span>
           
-          <code class="ruby">    object.destination.gsub(/ /, &#39;+&#39;)</code>
+          <code class="ruby">    uri = object.destination.gsub(/ /, &#39;+&#39;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="7">
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    &quot;https://www.google.com/maps/embed/v1/place?key=#{ENV[&#39;GOOGLE_MAPS_API_KEY&#39;]}&amp;q=#{uri}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="8">
+        <li class="never" data-hits="" data-linenumber="9">
           
           
           <code class="ruby">end</code>
@@ -1589,7 +1631,7 @@
         <li class="covered" data-hits="1" data-linenumber="15">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect(body[:data][:attributes][:formatted_destination]).to eq(&#39;1331+17th+St,+Denver,+CO,+80202&#39;)</code>
+          <code class="ruby">    expect(body[:data][:attributes][:formatted_destination]).to eq(&quot;https://www.google.com/maps/embed/v1/place?key=#{ENV[&#39;GOOGLE_MAPS_API_KEY&#39;]}&amp;q=1331+17th+St,+Denver,+CO,+80202&quot;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
