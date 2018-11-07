@@ -46,4 +46,26 @@ describe 'Dispatcher' do
     expect(response.status).to eq(200)
     expect(body[:data][:attributes][:destination]).to eq(new_destination)
   end
+
+  it "can update it's own destination" do
+    dispatcher = create(:user, role: 'dispatcher')
+    dispatcher.generate_api_key
+
+    headers = { "CONTENT_TYPE" => "application/json", "X-API-KEY" => dispatcher.api_key }
+
+    expect(dispatcher.destination).to eq('1331 17th Street, Denver, CO 80202')
+
+    new_destination = '6219 Willow Lane, Boulder, CO 80301'
+
+    payload = {
+      destination: new_destination
+    }
+
+    post "/api/v1/dispatchers/#{dispatcher.id}/destination", headers: headers, params: payload.to_json
+
+    post_body = JSON.parse(response.body, symbolize_names: true)
+    expect(response.status).to eq(200)
+    expect(post_body[:data][:attributes][:destination]).to eq(new_destination)
+    expect(post_body[:data][:attributes][:formatted_destination]).to eq('https://www.google.com/maps/embed/v1/place?key=AIzaSyAiizvH0vBVQRC1ChK3ga34oGcTiFcWAx0&q=6219+Willow+Lane,+Boulder,+CO+80301')
+  end
 end
