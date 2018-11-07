@@ -1,21 +1,5 @@
-$('#dispatch-submit').click(function(){
-  findAddress();
-});
-
-$('#dispatcher-destination').keydown(function(e){
-  if (e.which == 13){
-    findAddress();
-  }
-})
-
-$('.driver-button').click(function(){
-  driver_id = $(this).val();
-  setAddress(driver_id);
-})
-
 function setAddress(driver_id){
   var address = $('#dispatcher-destination').val();
-  console.log(address)
   $.ajax({
     method: 'POST',
     dataType: "json",
@@ -37,7 +21,6 @@ function setAddress(driver_id){
 
 function findAddress(){
   var address = $('#dispatcher-destination').val();
-  console.log(address)
   $.ajax({
     method: 'POST',
     dataType: "json",
@@ -59,3 +42,45 @@ function findAddress(){
     },
   })
 }
+
+function getDrivers(){
+  $.ajax({
+    dataType: 'json',
+    headers: {
+      'X-API-KEY': api_key
+    },
+    async: false,
+    url: '/api/v1/drivers',
+    success: function(data){
+      createDriverList(data);
+    }
+  })
+}
+
+function createDriverList(driver_array){
+  var json_converted_drivers = driver_array.map(function(driver){
+    return JSON.parse(driver);
+  });
+  json_converted_drivers.forEach(function(driver){
+    $('.drivers').append("<div><button class='driver-button' type='button' value='" + driver.data.id + "'>" + driver.data.attributes.username + "</button></div>")
+  })
+}
+
+getDrivers();
+
+$('#dispatch-submit').click(function(){
+  findAddress();
+});
+
+$('#dispatcher-destination').keydown(function(e){
+  if (e.which == 13){
+    findAddress();
+  }
+})
+
+$('.driver-button').click(function(){
+  console.log('CLICKED')
+  driver_id = $(this).val();
+  console.log(driver_id);
+  setAddress(driver_id);
+})
