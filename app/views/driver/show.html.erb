@@ -1,0 +1,10 @@
+<h4 id='driver-destination'>Map for <%= current_user.destination %>:</h4>
+
+<iframe id="driver-iframe" src="<%= current_user.formatted_destination %>" width="600" height="800"></iframe>
+
+<script type="text/javascript">
+  window.api_key = "<%= current_user.api_key %>";
+  window.driver_id = "<%= current_user.id %>";
+</script>
+
+<%= javascript_include_tag 'driver' %>

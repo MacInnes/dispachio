@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       user_setup(user)
-      redirect_to "/#{user.role}"
+      redirect_to "/#{user.role}/#{user.id}"
     else
       redirect_to('/register', notice: 'Invalid registration details.')
     end

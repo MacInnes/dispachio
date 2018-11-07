@@ -1,0 +1,26 @@
+<h1>Dispatch View</h1>
+
+<h4 id='dispatch-destination'>Map for <%= current_user.destination %>:</h4>
+
+<div class="dispatcher-inputs">
+  <input id="dispatcher-destination" type="text" name="destination" placeholder="<%= current_user.destination %>">
+  <button id="dispatch-submit" type="button" name="submit">Submit</button>
+</div>
+
+<div class="drivers">
+  <p>Assign this location to a driver:</p>
+  <% current_user.drivers.each do |driver| %>
+    <div class="driver-section">
+      <button class="driver-button" type="button" name="button" value="<%= driver.id %>"><%= driver.username %></button>
+    </div>
+  <% end %>
+</div>
+
+<iframe id="dispatcher-iframe" src="<%= current_user.formatted_destination %>" width="600" height="800"></iframe>
+
+<script type="text/javascript">
+  window.api_key = "<%= current_user.api_key %>";
+  window.dispatcher_id = "<%= current_user.id %>";
+</script>
+
+<%= javascript_include_tag 'dispatcher' %>

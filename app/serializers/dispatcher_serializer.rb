@@ -1,4 +1,4 @@
-class DriverSerializer
+class DispatcherSerializer
   include FastJsonapi::ObjectSerializer
   attributes :id, :username, :email, :destination
 
@@ -6,5 +6,4 @@ class DriverSerializer
     uri = object.destination.gsub(/ /, '+')
     "https://www.google.com/maps/embed/v1/place?key=#{ENV['GOOGLE_MAPS_API_KEY']}&q=#{uri}"
   end
-
 end
