@@ -17,7 +17,7 @@ feature 'An unregistered user' do
     select :dispatcher, from: :user_role
     click_on('Submit')
 
-    expect(current_path).to eq('/dispatcher')
+    expect(current_path).to eq("/dispatcher/1")
     expect(page).to have_content('Logged in as MacInnes')
 
     # I receive an email including my API key.
@@ -38,7 +38,7 @@ feature 'An unregistered user' do
     select :driver, from: :user_role
     click_on('Submit')
 
-    expect(current_path).to eq('/driver')
+    expect(current_path).to eq('/driver/1')
     expect(page).to have_content('Logged in as MacInnes')
   end
 

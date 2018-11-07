@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   get '/register', to: 'register#new'
 
-  get '/dispatcher', to: 'dispatch#index'
+  get '/dispatcher/:id', to: 'dispatch#show'
 
-  get '/driver', to: 'driver#index'
+  get '/driver/:id', to: 'driver#show'
 
   resources :users, only: [:create]
 

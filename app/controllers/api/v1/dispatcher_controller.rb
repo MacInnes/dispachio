@@ -1,6 +1,6 @@
 class Api::V1::DispatcherController < ActionController::API
 
-  def index
+  def show
     if dispatcher?
       render json: DispatcherSerializer.new(@user).serialized_json
     else
