@@ -1,27 +1,22 @@
-function getInitialMap(){
+$('#dispatch-submit').click(function(){
+  var address = $('#dispatch-address').val();
   $.ajax({
+    method: 'POST',
     dataType: "json",
-    url: '/api/v1/dispatcher',
     headers: {
       'X-API-KEY': api_key
     },
+    url: '/api/v1/dispatchers/' + dispatcher_id + '/destination',
+    data: {
+      destination: address
+    },
     success: function(data){
       if (data){
-        map = data.data.attributes.initial_map
-        $('#dispatcher-iframe').attr('src', map)
+        var new_destination = data.data.attributes.formatted_destination
+        var destination = data.data.attributes.destination
+        $('#dispatcher-destination').text('Directions to ' + destination + ':')
+        $('#dispatcher-iframe').attr('src', new_destination)
       }
     },
-    error: function(){
-      console.log('error occurred!!')
-    }
-  });
-};
-
-$('#dispatch-submit').click(function(){
-  var address = $('#dispatch-address').val();
-  console.log(address);
+  })
 });
-
-getInitialMap();
-
-console.log('DISPACHIO')

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
         get '/drivers/:id/destination', to: 'driver#show'
         post '/drivers/:id/destination', to: 'driver#update'
-        get '/dispatcher', to: 'dispatcher#show'
+        get '/dispatchers/:id', to: 'dispatcher#show'
         post '/dispatchers/:id/destination', to: 'dispatcher#update'
     end
   end
