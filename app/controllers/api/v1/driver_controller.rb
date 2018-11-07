@@ -21,7 +21,7 @@ class Api::V1::DriverController < ActionController::API
   private
 
   def dispatcher?
-    @user = User.find_by_api_key(request.headers['X-API-KEY'])
+    @user ||= User.find_by_api_key(request.headers['X-API-KEY'])
     @user.role == 'dispatcher'
   end
 
