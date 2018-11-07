@@ -1,12 +1,10 @@
 function getDestination(){
   $.ajax({
-    method: "POST",
     dataType: "json",
     url: '/api/v1/drivers/' + driver_id + '/destination',
     headers: {
       'X-API-KEY': api_key
     },
-    data:
     ifModified: true,
     success: function(data){
       if (data){

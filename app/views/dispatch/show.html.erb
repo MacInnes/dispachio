@@ -8,8 +8,11 @@
 </div>
 
 <div class="drivers">
+  <p>Assign this location to a driver:</p>
   <% current_user.drivers.each do |driver| %>
-    <button class="driver_button" type="button" name="button" value="<%= driver.id %>"><%= driver.username %></button>
+    <div class="driver-section">
+      <button class="driver-button" type="button" name="button" value="<%= driver.id %>"><%= driver.username %></button>
+    </div>
   <% end %>
 </div>
 
