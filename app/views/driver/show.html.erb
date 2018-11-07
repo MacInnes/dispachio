@@ -3,8 +3,9 @@
 <iframe id="driver-iframe" src="<%= current_user.formatted_destination %>" width="600" height="800"></iframe>
 
 <script type="text/javascript">
+  var url = window.location.href.split('/')
+  window.driver_id = url[url.length - 1]
   window.api_key = "<%= current_user.api_key %>";
-  window.driver_id = "<%= current_user.id %>";
 </script>
 
 <%= javascript_include_tag 'driver' %>

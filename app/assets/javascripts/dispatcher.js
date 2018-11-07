@@ -1,6 +1,5 @@
 function setAddress(driver_id){
   var address = $('#dispatcher-destination').val();
-  console.log(address)
   $.ajax({
     method: 'POST',
     dataType: "json",
