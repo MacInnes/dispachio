@@ -1,4 +1,15 @@
 $('#dispatch-submit').click(function(){
+  findAddress();
+});
+
+$('#dispatch-address').keyup(function(e){
+  if(e.keyCode == 13)
+  {
+    findAddress();
+  }
+});
+
+function findAddress(address){
   var address = $('#dispatch-address').val();
   $.ajax({
     method: 'POST',
@@ -19,4 +30,4 @@ $('#dispatch-submit').click(function(){
       }
     },
   })
-});
+}
