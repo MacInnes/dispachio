@@ -2,9 +2,15 @@
 
 <h4 id='dispatch-destination'>Map for <%= current_user.destination %>:</h4>
 
-<div class="">
+<div class="dispatcher-inputs">
   <input id="dispatcher-destination" type="text" name="destination" placeholder="<%= current_user.destination %>">
   <button id="dispatch-submit" type="button" name="submit">Submit</button>
+</div>
+
+<div class="drivers">
+  <% current_user.drivers.each do |driver| %>
+    <button class="driver_button" type="button" name="button" value="<%= driver.id %>"><%= driver.username %></button>
+  <% end %>
 </div>
 
 <iframe id="dispatcher-iframe" src="<%= current_user.formatted_destination %>" width="600" height="800"></iframe>

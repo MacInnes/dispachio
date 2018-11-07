@@ -14,4 +14,8 @@ class User < ApplicationRecord
     "https://www.google.com/maps/embed/v1/place?key=#{ENV['GOOGLE_MAPS_API_KEY']}&q=#{uri}"
   end
 
+  def drivers
+    User.where(role: 'driver')
+  end
+
 end
