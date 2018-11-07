@@ -10,9 +10,8 @@ class User < ApplicationRecord
   end
 
   def formatted_destination
-    if self.destination
-      uri = self.destination.gsub(/ /, '+')
-      "https://www.google.com/maps/embed/v1/place?key=#{ENV['GOOGLE_MAPS_API_KEY']}&q=#{uri}"
-    end
+    uri = self.destination.gsub(/ /, '+')
+    "https://www.google.com/maps/embed/v1/place?key=#{ENV['GOOGLE_MAPS_API_KEY']}&q=#{uri}"
   end
+
 end

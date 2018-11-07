@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get '/register', to: 'register#new'
 
-  get 'dispatcher', to: 'dispatch#index'
+  get '/dispatcher', to: 'dispatch#index'
 
   get '/driver', to: 'driver#index'
 
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
         get '/drivers/:id/destination', to: 'driver#show'
         post '/drivers/:id/destination', to: 'driver#update'
+        get '/dispatcher', to: 'dispatcher#index'
     end
   end
 end

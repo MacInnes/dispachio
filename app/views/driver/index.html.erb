@@ -1,6 +1,6 @@
 <h4 id='driver-destination'>Directions to <%= current_user.destination %>:</h4>
 
-<iframe id="driver-iframe" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&q=<%= current_user.formatted_destination %>" width="600" height="800"></iframe>
+<iframe id="driver-iframe" src="<%= current_user.formatted_destination %>" width="600" height="800"></iframe>
 
 <script type="text/javascript">
   window.api_key = "<%= current_user.api_key %>";
