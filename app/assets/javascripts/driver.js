@@ -20,6 +20,38 @@ function getDestination(){
   });
 };
 
+function success(pos) {
+  var crd = pos.coords;
+
+  $.ajax({
+    method: 'POST',
+    dataType: 'json',
+    contentType: 'application/json',
+    headers: {
+      'X-API-KEY': api_key
+    },
+    url: '/api/v1/drivers/' + driver_id + '/location',
+    data: JSON.stringify({
+     latitude: crd.latitude,
+     longitude: crd.longitude
+    }),
+    success: function(data){
+      console.log('Location sent.')
+    }
+  })
+}
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+function getLocation(){
+  navigator.geolocation.getCurrentPosition(success, error);
+};
+
 getDestination();
+getLocation();
 
 setInterval(getDestination, 10000);
+
+setInterval(getLocation, 60000);

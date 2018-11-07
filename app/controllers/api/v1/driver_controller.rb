@@ -13,6 +13,9 @@ class Api::V1::DriverController < ActionController::API
       @user = User.find(params[:id])
       @user.update(destination: params[:destination])
       render json: DriverSerializer.new(@user).serialized_json
+    elsif driver? && params[:latitude]
+      @user = User.find(params[:id])
+      @user.update(latitude: params[:latitude], longitude: params[:longitude])
     else
       render status: 403, json: {message: "Unathorized"}
     end
@@ -35,6 +38,11 @@ class Api::V1::DriverController < ActionController::API
   def dispatcher?
     @user ||= User.find_by_api_key(request.headers['X-API-KEY'])
     @user.role == 'dispatcher'
+  end
+
+  def driver?
+    @user ||= User.find_by_api_key(request.headers['X-API-KEY'])
+    @user.role == 'driver'
   end
 
   def valid_user?
