@@ -11,8 +11,9 @@ class Api::V1::DispatcherController < ActionController::API
   def update
     if this_dispatcher?
       @user = User.find(params[:id])
-      @user.update(destination: params[:destination])
-      render json: DriverSerializer.new(@user).serialized_json
+      json = JSON.parse(request.body.read, symbolize_names: true)
+      @user.update(destination: json[:destination])
+      render json: DispatcherSerializer.new(@user).serialized_json
     else
       render status: 403, json: {message: "Unathorized"}
     end
