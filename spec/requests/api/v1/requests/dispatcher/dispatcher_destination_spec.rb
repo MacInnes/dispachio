@@ -68,4 +68,23 @@ describe 'Dispatcher' do
     expect(post_body[:data][:attributes][:destination]).to eq(new_destination)
     expect(post_body[:data][:attributes][:formatted_destination]).to eq('https://www.google.com/maps/embed/v1/place?key=AIzaSyAiizvH0vBVQRC1ChK3ga34oGcTiFcWAx0&q=6219+Willow+Lane,+Boulder,+CO+80301')
   end
+
+  it 'can get a list of drivers' do
+    dispatcher = create(:user, role: 'dispatcher')
+    dispatcher.generate_api_key
+    drivers = create_list(:user, 3)
+
+    headers = { "CONTENT_TYPE" => "application/json", "X-API-KEY" => dispatcher.api_key }
+
+    get '/api/v1/drivers', headers: headers
+
+    response_array = JSON.parse(response.body)
+    response_body = response_array.map do |each|
+      JSON.parse(each, symbolize_names: true)
+    end
+
+    expect(response.status).to eq(200)
+    expect(response_body.length).to eq(3)
+    expect(response_body.first[:data][:type]).to eq('driver')
+  end
 end

@@ -18,6 +18,18 @@ class Api::V1::DriverController < ActionController::API
     end
   end
 
+  def index
+    if dispatcher?
+      drivers = User.where(role: 'driver')
+      serialized_drivers = drivers.map do |driver|
+        DriverSerializer.new(driver).serialized_json
+      end
+      render json: serialized_drivers
+    else
+      render status: 403, json: {message: "Unathorized"}
+    end
+  end
+
   private
 
   def dispatcher?
