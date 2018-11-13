@@ -12,11 +12,15 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create]
-        get '/drivers', to: 'driver#index'
-        get '/drivers/:id/destination', to: 'driver#show'
-        post '/drivers/:id/destination', to: 'driver#update'
-        get '/dispatchers/:id', to: 'dispatcher#show'
-        post '/dispatchers/:id/destination', to: 'dispatcher#update'
+      get '/drivers', to: 'driver#index'
+      get '/drivers/:id/destination', to: 'driver#show'
+      post '/drivers/:id/destination', to: 'driver#update'
+      get '/dispatchers/:id', to: 'dispatcher#show'
+      post '/dispatchers/:id/destination', to: 'dispatcher#update'
+    end
+
+    namespace :v2 do
+      
     end
   end
 end
