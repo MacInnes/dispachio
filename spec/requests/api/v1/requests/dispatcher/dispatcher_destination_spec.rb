@@ -85,6 +85,5 @@ describe 'Dispatcher' do
 
     expect(response.status).to eq(200)
     expect(response_body.length).to eq(3)
-    expect(response_body.first[:data][:type]).to eq('driver')
   end
 end

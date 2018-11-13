@@ -1,6 +1,6 @@
-class DriverSerializer
+class UserSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :id, :username, :email, :destination, :lat, :long
+  attributes :id, :username, :email, :destination, :role
 
   attribute :formatted_destination do |object|
     uri = object.destination.gsub(/ /, '+')

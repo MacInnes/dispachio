@@ -2,7 +2,7 @@ class Api::V1::DriverController < ActionController::API
 
   def show
     if valid_user?
-      render json: DriverSerializer.new(@user).serialized_json
+      render json: UserSerializer.new(@user).serialized_json
     else
       render status: 403, json: {message: "Unauthorized"}
     end
@@ -12,7 +12,7 @@ class Api::V1::DriverController < ActionController::API
     if dispatcher?
       @user = User.find(params[:id])
       @user.update(destination: params[:destination])
-      render json: DriverSerializer.new(@user).serialized_json
+      render json: UserSerializer.new(@user).serialized_json
     else
       render status: 403, json: {message: "Unathorized"}
     end
@@ -22,7 +22,7 @@ class Api::V1::DriverController < ActionController::API
     if dispatcher?
       drivers = User.where(role: 'driver')
       serialized_drivers = drivers.map do |driver|
-        DriverSerializer.new(driver).serialized_json
+        UserSerializer.new(driver).serialized_json
       end
       render json: serialized_drivers
     else

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
 
     namespace :v2 do
-      
+      resources :drivers, only: [:create, :show]
     end
   end
 end
