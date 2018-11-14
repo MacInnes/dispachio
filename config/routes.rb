@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     end
 
     namespace :v2 do
-      resources :drivers, only: [:create, :show]
+      resources :drivers, only: [:create, :show] do
+        post 'update_location'
+      end
     end
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe '/api/v2/' do
 
-  it 'responds to POST /api/v1/drivers' do
+  it 'responds to POST /drivers' do
     username = 'MacInnes'
     payload = {
       username: username,
@@ -17,7 +17,7 @@ describe '/api/v2/' do
     expect(Driver.find_by_username(username).username).to eq(username)
   end
 
-  it 'fails an invalid POST to /api/v1/drivers' do
+  it 'fails an invalid POST to /drivers' do
     username = 'sdfkhfd'
 
     payload = {
@@ -31,7 +31,7 @@ describe '/api/v2/' do
     expect(body[:message]).to eq('Invalid request')
   end
 
-  it 'responds to GET /api/v2/drivers/:id' do
+  it 'responds to GET /drivers/:id' do
     driver = create(:driver)
     driver.generate_api_key
 
@@ -43,5 +43,9 @@ describe '/api/v2/' do
     expect(body[:data][:type]).to eq('driver')
     expect(body[:data][:attributes][:formatted_destination]).to eq("https://www.google.com/maps/embed/v1/place?key=#{ENV['GOOGLE_MAPS_API_KEY']}&q=1331+17th+Street,+Denver,+CO+80202")
     expect(body[:data][:attributes][:formatted_location]).to eq(driver.lat + ',+' + driver.long)
+  end
+
+  it 'responds to POST /drivers/:id' do
+
   end
 end
