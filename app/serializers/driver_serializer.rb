@@ -7,4 +7,8 @@ class DriverSerializer
     "https://www.google.com/maps/embed/v1/place?key=#{ENV['GOOGLE_MAPS_API_KEY']}&q=#{uri}"
   end
 
+  attribute :formatted_location do |object|
+    object.lat + ',+' + object.long
+  end
+
 end

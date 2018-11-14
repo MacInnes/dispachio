@@ -42,5 +42,6 @@ describe '/api/v2/' do
     expect(response.status).to eq(200)
     expect(body[:data][:type]).to eq('driver')
     expect(body[:data][:attributes][:formatted_destination]).to eq("https://www.google.com/maps/embed/v1/place?key=#{ENV['GOOGLE_MAPS_API_KEY']}&q=1331+17th+Street,+Denver,+CO+80202")
+    expect(body[:data][:attributes][:formatted_location]).to eq(driver.lat + ',+' + driver.long)
   end
 end
