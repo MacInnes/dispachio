@@ -35,7 +35,11 @@ describe '/api/v2/' do
     driver = create(:driver)
     driver.generate_api_key
 
-    get "/api/v2/drivers/#{driver.id}"
+    headers = {
+      'X-API-KEY': driver.api_key
+    }
+
+    get "/api/v2/drivers/#{driver.id}", headers: headers
 
     body = JSON.parse(response.body, symbolize_names: true)
 

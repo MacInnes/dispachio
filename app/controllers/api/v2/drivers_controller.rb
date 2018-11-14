@@ -1,4 +1,4 @@
-class Api::V2::DriversController < ActionController::API
+class Api::V2::DriversController < API::ApiController
 
   def create
     driver = Driver.new(driver_params)
@@ -11,9 +11,8 @@ class Api::V2::DriversController < ActionController::API
   end
 
   def show
-    driver = Driver.find(params[:id])
-    if driver
-      render json: DriverSerializer.new(driver).serialized_json
+    if current_driver
+      render json: DriverSerializer.new(current_driver).serialized_json
     else
       render status: 404, json: {message: "Driver not found"}
     end
