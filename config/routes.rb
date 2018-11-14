@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       resources :drivers, only: [:create, :show] do
         post 'update_location', to: 'drivers/location#update'
       end
+      resources :dispatchers, only: [:create]
     end
   end
 end
