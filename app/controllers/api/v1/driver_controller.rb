@@ -31,7 +31,12 @@ class Api::V1::DriverController < ActionController::API
   end
 
   def update_location
-    
+    if current_driver?
+      @user.update(lat: params[:lat], long: params[:long])
+      render status: 204, json: ''
+    else
+      render status: 403, json: {message: 'Unauthorized'}
+    end
   end
 
   private
@@ -39,6 +44,11 @@ class Api::V1::DriverController < ActionController::API
   def dispatcher?
     @user ||= User.find_by_api_key(request.headers['X-API-KEY'])
     @user.role == 'dispatcher'
+  end
+
+  def current_driver?
+    @user ||= User.find_by_api_key(request.headers['X-API-KEY'])
+    @user.id == params[:id].to_i && @user.role == 'driver'
   end
 
   def valid_user?
