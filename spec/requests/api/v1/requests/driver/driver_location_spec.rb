@@ -17,8 +17,11 @@ describe 'Driver' do
 
     post "/api/v1/drivers/#{driver.id}/location", headers: headers, params: payload.to_json
 
-    binding.pry
+
     expect(response.status).to eq(204)
 
+    updated_driver = User.first
+    expect(updated_driver.lat).to eq('39.7507834')
+    expect(updated_driver.long).to eq('-104.9964355')
   end
 end

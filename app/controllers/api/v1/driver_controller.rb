@@ -30,6 +30,10 @@ class Api::V1::DriverController < ActionController::API
     end
   end
 
+  def update_location
+    
+  end
+
   private
 
   def dispatcher?
