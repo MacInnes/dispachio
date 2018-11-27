@@ -7,7 +7,7 @@ describe 'Dispatcher' do
     driver.generate_api_key
     dispatcher.generate_api_key
 
-    headers = { "CONTENT_TYPE" => "application/json", "X-API-KEY" => dispatcher.api_key }
+    headers = { "CONTENT_TYPE": "application/json", "X-API-KEY": dispatcher.api_key }
 
     get "/api/v1/drivers/#{driver.id}", headers: headers
 
