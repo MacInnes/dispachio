@@ -1,15 +1,20 @@
-<%= form_for @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+<%= form_tag [:api, :v1, :users], method: 'POST' do %>
+  <%= label_tag :username %>
+  <%= text_field_tag :username %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+  <%= label_tag :email %>
+  <%= email_field_tag :email %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
 
-  <%= f.label :role %>
-  <%= f.select :role, ["dispatcher", "driver"] %>
+  <%= label_tag :role %>
+  <%= select_tag :role, ["dispatcher", "driver"] %>
+  <%= label_tag "Dispatcher", for: "dispatcher" %>
+  <%= radio_button_tag :role, "Dispatcher", id: "dispatcher" %>
+  <%= label_tag "Driver", for: "driver" %>
+  <%= radio_button_tag :role, "Driver", id: "driver" %>
 
-  <%= f.submit "Submit" %>
+
+  <%= submit_tag "Submit" %>
 <% end %>
