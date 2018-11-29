@@ -52,7 +52,7 @@ class Api::V1::DriverController < ActionController::API
   end
 
   def valid_user?
-    @user ||= User.find_by_api_key(session[:api_key])
+    @user ||= User.find_by_api_key(request.headers['X-API-KEY'])
     @user.id == params[:id].to_i || @user.role == 'dispatcher'
   end
 
