@@ -34,7 +34,18 @@ $(document).ready(function(){
       })
     })
     .then(response => response.json())
-    .then(formatted_response => console.log(formatted_response))
+    .then(formatted_response => setStorage(formatted_response))
     .catch(error => console.error(error))
   })
 })
+
+function setStorage(user_data){
+  localStorage.id = user_data.data.attributes.id
+  localStorage.api_key = user_data.data.attributes.api_key
+  localStorage.role = user_data.data.attributes.role
+  redirect(localStorage.role, localStorage.id)
+}
+
+function redirect(role, id){
+  window.location = `${role}/${id}`
+}
