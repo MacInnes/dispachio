@@ -4,7 +4,7 @@ class Api::V1::UsersController < ActionController::API
     user = User.new(user_params)
     if user.save
       user_setup(user)
-      render json: {api_key: user.api_key}
+      render json: UserSerializer.new(user).serialized_json
     else
       render status: 400, json: {message: "Invalid request"}
     end
