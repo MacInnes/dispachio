@@ -1,24 +1,21 @@
-<%= form_tag [:api, :v1, :users], method: 'POST', remote: true, id: "registration-form" do %>
+<form class="registration-form">
   <div class="form-group">
-    <%= label_tag :username %>
-    <%= text_field_tag :username, nil, class: "form-control" %>
+    <label for="username">Username:</label>
+    <input type="text" name="username" class="form-control" id="username">
   </div>
   <div class="form-group">
-    <%= label_tag :email %>
-    <%= email_field_tag :email, nil, class: "form-control"%>
+    <label for="email">Email:</label>
+    <input type="text" name="email" class="form-control" id="email">
   </div>
   <div class="form-group">
-    <%= label_tag :password %>
-    <%= password_field_tag :password, nil, class: "form-control" %>
+    <label for="password">Password:</label>
+    <input type="password" name="password" class="form-control" id="password">
   </div>
-  <div class="form-group">
-    <%= label_tag "role_dispatcher", "Dispatcher" %>
-    <%= radio_button_tag :role, "dispatcher", id: "dispatcher", class: "form-check" %>
-
-    <%= label_tag "role_driver", "Driver" %>
-    <%= radio_button_tag :role, "driver", id: "driver", class: "form-check" %>
+  <div class="form-group role">
+    <label for="driver">Driver</label>
+    <input id="driver" type="radio" name="role" value="driver" checked>
+    <label for="dispatcher">Dispatcher</label>
+    <input id="dispatcher" type="radio" name="role" value="dispatcher">
   </div>
-
-
-  <%= submit_tag "Submit", data: { disable_with: false }, id: "registration-submit" %>
-<% end %>
+  <button class="btn btn-primary" type="button" id="registration-submit">Submit</button>
+</form>

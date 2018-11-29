@@ -18,14 +18,35 @@
 //= require bootstrap
 
 $(document).ready(function(){
-
-  function registerUser(event){
-    let [data] = event.detail
-    localStorage.id = data.data.id
-    localStorage.api_key = data.data.attributes.api_key
-    window.location = `/${data.data.attributes.role}/${data.data.id}`
-    console.log(data)
-  }
-
-  $('#registration-form').on ("ajax:success", registerUser);
+  $('#registration-submit').click(function(event){
+    var username = $('#username').val();
+    var email = $('#email').val();
+    var password = $('#password').val();
+    var role = $('input[name=role]:checked').val();
+    fetch('/api/v1/users', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        username: username,
+        email: email,
+        password: password,
+        role: role
+      })
+    })
+    .then(response => response.json())
+    .then(formatted_response => setStorage(formatted_response))
+    .catch(error => console.error(error))
+  })
 })
+
+function setStorage(user_data){
+  localStorage.id = user_data.data.attributes.id
+  localStorage.username = user_data.data.attributes.username
+  localStorage.api_key = user_data.data.attributes.api_key
+  localStorage.role = user_data.data.attributes.role
+  redirect(localStorage.role, localStorage.id)
+}
+
+function redirect(role, id){
+  window.location = `${role}/${id}`
+}
