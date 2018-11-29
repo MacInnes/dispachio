@@ -16,3 +16,14 @@
 //= require jquery-ui
 //= require popper
 //= require bootstrap
+
+$(document).ready(function(){
+
+  function registerUser(event){
+    let [data] = event.detail
+    window.location = `/${data.data.attributes.role}/${data.data.id}`
+    console.log(data)
+  }
+
+  $('#registration-form').on ("ajax:success", registerUser);
+})
