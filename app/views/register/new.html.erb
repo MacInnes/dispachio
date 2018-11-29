@@ -22,3 +22,25 @@
 
   <%= submit_tag "Submit", data: { disable_with: false }, id: "registration-submit" %>
 <% end %>
+
+<form class="registration-form">
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" name="username" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="text" name="email" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" name="password" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="driver">Driver</label>
+    <input id="driver" type="radio" name="role" value="driver" checked>
+    <label for="dispatcher">Dispatcher</label>
+    <input id="dispatcher" type="radio" name="role" value="dispatcher">
+  </div>
+  <button class="btn btn-primary" type="button" id="registration-submit">Submit</button>
+</form>
