@@ -21,6 +21,8 @@ $(document).ready(function(){
 
   function registerUser(event){
     let [data] = event.detail
+    localStorage.id = data.data.id
+    localStorage.api_key = data.data.attributes.api_key
     window.location = `/${data.data.attributes.role}/${data.data.id}`
     console.log(data)
   }

@@ -23,6 +23,7 @@ class Api::V1::UsersController < ActionController::API
   def user_setup(user)
     user.generate_api_key
     session[:id] = user.id
+    session[:api_key] = user.api_key
     send_api_key(user)
   end
 

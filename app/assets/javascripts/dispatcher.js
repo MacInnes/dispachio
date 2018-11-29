@@ -5,7 +5,7 @@ function setAddress(driver_id){
     dataType: "json",
     contentType: 'application/json',
     headers: {
-      'X-API-KEY': window.api_key
+      'X-API-KEY': localStorage.api_key
     },
     url: '/api/v1/drivers/' + driver_id + '/destination',
     data: JSON.stringify({
@@ -26,9 +26,9 @@ function findAddress(){
     dataType: "json",
     contentType: 'application/json',
     headers: {
-      'X-API-KEY': window.api_key
+      'X-API-KEY': localStorage.api_key
     },
-    url: '/api/v1/dispatchers/' + window.dispatcher_id + '/destination',
+    url: '/api/v1/dispatchers/' + localStorage.id + '/destination',
     data: JSON.stringify({
      destination: address
     }),
@@ -47,7 +47,7 @@ function getDrivers(){
   $.ajax({
     dataType: 'json',
     headers: {
-      'X-API-KEY': window.api_key
+      'X-API-KEY': localStorage.api_key
     },
     async: false,
     url: '/api/v1/drivers',
