@@ -13,8 +13,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:create]
         get '/drivers', to: 'driver#index'
-        get '/drivers/:id/destination', to: 'driver#show'
+        get '/drivers/:id', to: 'driver#show'
         post '/drivers/:id/destination', to: 'driver#update'
+        patch '/drivers/:id/location', to: 'driver#update_location'
         get '/dispatchers/:id', to: 'dispatcher#show'
         post '/dispatchers/:id/destination', to: 'dispatcher#update'
     end
