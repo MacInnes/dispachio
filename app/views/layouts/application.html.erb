@@ -6,16 +6,20 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag    'dispachio' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-    <%= flash[:notice] if flash[:notice] %>
-    <% if current_user %>
-      <p>Logged in as <%= current_user.username %></p>
-    <% else %>
-      <%= link_to "Register", register_path %>
-    <% end %>
+    <nav class="navbar">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <h4 class="navbar-brand" id="dispachio-title">Dispachio</h4>
+          <a href="/register" type="button" id="register-btn" class="btn btn-primary" role="button">Register</a>
+          <a href="/login" type="button" id="login-btn" class="btn btn-primary" role="button">Login</a>
+        </div>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

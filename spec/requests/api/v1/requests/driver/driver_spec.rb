@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe 'Driver' do
+
   it 'can get their destination' do
     driver = create(:user, role: 'driver')
     driver.generate_api_key

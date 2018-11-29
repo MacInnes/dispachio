@@ -1,9 +1,9 @@
 function getDestination(){
   $.ajax({
     dataType: "json",
-    url: '/api/v1/drivers/' + driver_id + '/destination',
+    url: '/api/v1/drivers/' + localStorage.id,
     headers: {
-      'X-API-KEY': api_key
+      'X-API-KEY': localStorage.api_key
     },
     ifModified: true,
     success: function(data){

@@ -1,15 +1,24 @@
-<%= form_for @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+<%= form_tag [:api, :v1, :users], method: 'POST', remote: true, id: "registration-form" do %>
+  <div class="form-group">
+    <%= label_tag :username %>
+    <%= text_field_tag :username, nil, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :email %>
+    <%= email_field_tag :email, nil, class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= label_tag :password %>
+    <%= password_field_tag :password, nil, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag "role_dispatcher", "Dispatcher" %>
+    <%= radio_button_tag :role, "dispatcher", id: "dispatcher", class: "form-check" %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+    <%= label_tag "role_driver", "Driver" %>
+    <%= radio_button_tag :role, "driver", id: "driver", class: "form-check" %>
+  </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
 
-  <%= f.label :role %>
-  <%= f.select :role, ["dispatcher", "driver"] %>
-
-  <%= f.submit "Submit" %>
+  <%= submit_tag "Submit", data: { disable_with: false }, id: "registration-submit" %>
 <% end %>

@@ -1,9 +1,9 @@
 <h1>Dispatch View</h1>
 
-<h4 id='dispatch-destination'>Map for <%= current_user.destination %>:</h4>
+<h4 id='dispatch-destination'>Map for :</h4>
 
 <div class="dispatcher-inputs">
-  <input id="dispatcher-destination" type="text" name="destination" placeholder="<%= current_user.destination %>">
+  <input id="dispatcher-destination" type="text" name="destination">
   <button id="dispatch-submit" type="button" name="submit">Submit</button>
 </div>
 
@@ -12,12 +12,6 @@
 
 </div>
 
-<iframe id="dispatcher-iframe" src="<%= current_user.formatted_destination %>" width="600" height="800"></iframe>
-
-<script type="text/javascript">
-  var url = window.location.href.split('/')
-  window.dispatcher_id = url[url.length - 1]
-  window.api_key = "<%= current_user.api_key %>";
-</script>
+<iframe id="dispatcher-iframe" src="" width="600" height="800"></iframe>
 
 <%= javascript_include_tag 'dispatcher' %>

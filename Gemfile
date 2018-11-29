@@ -18,6 +18,7 @@ gem 'fast_jsonapi'
 gem 'active_model_serializers', '0.10'
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
+gem 'bootstrap'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 

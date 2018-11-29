@@ -14,3 +14,18 @@
 //= require activestorage
 //= require jquery3
 //= require jquery-ui
+//= require popper
+//= require bootstrap
+
+$(document).ready(function(){
+
+  function registerUser(event){
+    let [data] = event.detail
+    localStorage.id = data.data.id
+    localStorage.api_key = data.data.attributes.api_key
+    window.location = `/${data.data.attributes.role}/${data.data.id}`
+    console.log(data)
+  }
+
+  $('#registration-form').on ("ajax:success", registerUser);
+})
