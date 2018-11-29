@@ -41,6 +41,7 @@ $(document).ready(function(){
 
 function setStorage(user_data){
   localStorage.id = user_data.data.attributes.id
+  localStorage.username = user_data.data.attributes.username
   localStorage.api_key = user_data.data.attributes.api_key
   localStorage.role = user_data.data.attributes.role
   redirect(localStorage.role, localStorage.id)
