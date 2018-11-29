@@ -1,19 +1,24 @@
 <%= form_tag [:api, :v1, :users], method: 'POST' do %>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %>
-
-  <%= label_tag :email %>
-  <%= email_field_tag :email %>
-
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-
-  <%= label_tag :role %>
-  <%= select_tag :role, ["dispatcher", "driver"] %>
-  <%= label_tag "Dispatcher", for: "dispatcher" %>
-  <%= radio_button_tag :role, "Dispatcher", id: "dispatcher" %>
-  <%= label_tag "Driver", for: "driver" %>
-  <%= radio_button_tag :role, "Driver", id: "driver" %>
+  <div class="form-group">
+    <%= label_tag :username %>
+    <%= text_field_tag :username, nil, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :email %>
+    <%= email_field_tag :email, nil, class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= label_tag :password %>
+    <%= password_field_tag :password, nil, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag "Dispatcher", "Dispatcher" %>
+    <%= radio_button_tag :role, "dispatcher", id: "dispatcher", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag "Driver", "Driver" %>
+    <%= radio_button_tag :role, "driver", id: "driver", class: "form-control" %>
+  </div>
 
 
   <%= submit_tag "Submit" %>

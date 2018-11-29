@@ -11,10 +11,10 @@ feature 'An unregistered user' do
 
     expect(current_path).to eq('/register')
 
-    fill_in :user_username, with: 'MacInnes'
-    fill_in :user_email, with: 'test@test.com'
-    fill_in :user_password, with: 'password'
-    select :dispatcher, from: :user_role
+    fill_in :username, with: 'MacInnes'
+    fill_in :email, with: 'test@test.com'
+    fill_in :password, with: 'password'
+    choose :role, option: "dispatcher"
     click_on('Submit')
 
     expect(current_path).to eq("/dispatcher/1")
@@ -32,10 +32,10 @@ feature 'An unregistered user' do
 
     expect(current_path).to eq('/register')
 
-    fill_in :user_username, with: 'MacInnes'
-    fill_in :user_email, with: 'test@test.com'
-    fill_in :user_password, with: 'password'
-    select :driver, from: :user_role
+    fill_in :username, with: 'MacInnes'
+    fill_in :email, with: 'test@test.com'
+    fill_in :password, with: 'password'
+    choose :role, option: "driver"
     click_on('Submit')
 
     expect(current_path).to eq('/driver/1')
@@ -45,8 +45,8 @@ feature 'An unregistered user' do
   scenario 'creates an invalid account' do
     visit '/register'
 
-    fill_in :user_username, with: 'MacInnes'
-    select :driver, from: :user_role
+    fill_in :username, with: 'MacInnes'
+    choose :role, option: "driver"
     click_on('Submit')
 
     expect(current_path).to eq('/register')
