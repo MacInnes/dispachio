@@ -5,3 +5,7 @@ body {
 .navbar {
   background-color: #C2F9FF;
 }
+
+#logout-btn {
+  display: none;
+}
