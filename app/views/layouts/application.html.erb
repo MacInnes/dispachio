@@ -15,9 +15,11 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <h4 class="navbar-brand" id="dispachio-title">Dispachio</h4>
-          <a href="/register" type="button" id="register-btn" class="btn btn-primary" role="button">Register</a>
-          <a href="/login" type="button" id="login-btn" class="btn btn-primary" role="button">Login</a>
+          <a href="/register" type="button" id="register-btn" class="btn btn-primary register" role="button">Register</a>
+          <a href="/login" type="button" id="login-btn" class="btn btn-primary register" role="button">Login</a>
         </div>
+        <h4 id="nav-username"></h4>
+        <a href="/" type="button" id="logout-btn" class="btn btn-primary" role="button" >Logout</a>
       </div>
     </nav>
     <%= yield %>

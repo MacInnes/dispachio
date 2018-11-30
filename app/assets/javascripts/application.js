@@ -18,11 +18,17 @@
 //= require bootstrap
 
 $(document).ready(function(){
+  navSetup();
+  $('#logout-btn').click(function(){
+    localStorage.clear();
+  })
+
   $('#registration-submit').click(function(event){
     var username = $('#username').val();
     var email = $('#email').val();
     var password = $('#password').val();
     var role = $('input[name=role]:checked').val();
+    console.log('Username: ', username)
     fetch('/api/v1/users', {
       method: 'post',
       headers: { 'Content-Type': 'application/json'},
@@ -39,7 +45,20 @@ $(document).ready(function(){
   })
 })
 
+function navSetup(){
+  if (localStorage.id){
+    // display welcome username and logout button, hide register/login button
+    $('.register').hide();
+    $('#nav-username').text(`Welcome, ${localStorage.username}!`)
+    $('#logout-btn').show();
+  } else {
+    // display registration / login links
+    $('.register').show();
+  }
+}
+
 function setStorage(user_data){
+  console.log(user_data)
   localStorage.id = user_data.data.attributes.id
   localStorage.username = user_data.data.attributes.username
   localStorage.api_key = user_data.data.attributes.api_key
