@@ -1,24 +1,25 @@
 function getDestination(){
-  $.ajax({
-    dataType: "json",
-    url: '/api/v1/drivers/' + localStorage.id,
-    headers: {
-      'X-API-KEY': localStorage.api_key
-    },
-    ifModified: true,
-    success: function(data){
-      if (data){
-        var new_destination = data.data.attributes.formatted_destination
-        var destination = data.data.attributes.destination
-        $('#driver-destination').text('Directions to ' + destination + ':')
-        $('#driver-iframe').attr('src', new_destination)
-      }
-    },
-    error: function(){
-      console.log('error occurred!!')
-    }
-  });
-};
+  fetch(`/api/v1/drivers/${localStorage.id}`, {
+    headers: { 'X-API-KEY': localStorage.api_key }
+  })
+    .then(response => response.json())
+    .then(json => renderDestination(json))
+    .catch(error => console.log(error))
+}
+
+function renderDestination(data){
+  var newDestination = data.data.attributes.formatted_destination
+  var destination = data.data.attributes.destination
+  if (compareDestination(newDestination)){
+    $('#driver-destination').text('Directions to ' + destination + ':')
+    $('#driver-iframe').attr('src', newDestination)
+  }
+}
+
+function compareDestination(newDestination){
+  currentDestination = $('#driver-iframe').attr('src');
+  return currentDestination != newDestination;
+}
 
 getDestination();
 
