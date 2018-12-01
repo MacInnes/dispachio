@@ -9,6 +9,7 @@ class Api::V1::DispatcherController < ActionController::API
   end
 
   def update
+    # is this needed?
     if this_dispatcher?
       @user = User.find(params[:id])
       json = JSON.parse(request.body.read, symbolize_names: true)

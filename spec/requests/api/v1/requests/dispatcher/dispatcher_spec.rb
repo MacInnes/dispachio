@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Dispatcher' do
   it "can get a driver's destination and location" do
     driver = create(:user, role: 'driver')
-    dispatcher = create(:user, role: 'dispatcher')
+    dispatcher = create(:user, username: 'asdf', role: 'dispatcher')
     driver.generate_api_key
     dispatcher.generate_api_key
 
@@ -21,7 +21,7 @@ describe 'Dispatcher' do
 
   it "can update a driver's destination" do
     driver = create(:user, role: 'driver')
-    dispatcher = create(:user, role: 'dispatcher')
+    dispatcher = create(:user, username: 'asdf', role: 'dispatcher')
     driver.generate_api_key
     dispatcher.generate_api_key
 
@@ -74,7 +74,9 @@ describe 'Dispatcher' do
   it 'can get a list of drivers' do
     dispatcher = create(:user, role: 'dispatcher')
     dispatcher.generate_api_key
-    drivers = create_list(:user, 3)
+    create(:user, username: 'ahhh', role: 'driver')
+    create(:user, username: 'asdf', role: 'driver')
+    create(:user, username: 'hfdjh', role: 'driver')
 
     headers = { "CONTENT_TYPE" => "application/json", "X-API-KEY" => dispatcher.api_key }
 

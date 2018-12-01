@@ -19,7 +19,7 @@ describe 'Driver' do
   it "can't access another driver's destination" do
     driver_1 = create(:user, role: 'driver')
     driver_1.generate_api_key
-    driver_2 = create(:user, role: 'driver')
+    driver_2 = create(:user, username: 'asdf', role: 'driver')
     driver_2.generate_api_key
 
     headers = { "CONTENT_TYPE" => "application/json", "X-API-KEY" => driver_2.api_key }
@@ -78,7 +78,7 @@ describe 'Driver' do
     driver = create(:user)
     driver.generate_api_key
 
-    driver_2 = create(:user)
+    driver_2 = create(:user, username: 'asdf')
     driver_2.generate_api_key
 
     headers = {

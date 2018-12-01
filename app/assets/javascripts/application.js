@@ -23,7 +23,7 @@ $(document).ready(function(){
     localStorage.clear();
   })
 
-  $('#registration-submit').click(function(event){
+  $('#registration-submit').click(function(){
     var username = $('#username').val();
     var email = $('#email').val();
     var password = $('#password').val();
@@ -38,10 +38,27 @@ $(document).ready(function(){
         role: role
       })
     })
-    .then(response => response.json())
-    .then(formatted_response => setStorage(formatted_response))
-    .catch(error => console.error(error))
+      .then(response => response.json())
+      .then(formatted_response => setStorage(formatted_response))
+      .catch(error => console.error(error))
   })
+
+  $('#login-submit').click(function(){
+    var username = $('#username').val();
+    var password = $('#password').val();
+    fetch('/api/v1/login', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        username: username,
+        password: password
+      })
+    })
+      .then(response => response.json())
+      .then(formatted_response => setStorage(formatted_response))
+      .catch(error => console.error(error))
+  })
+
 })
 
 function navSetup(){
