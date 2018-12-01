@@ -1,22 +1,17 @@
-function setAddress(driver_id){
+function setAddress(driverId){
   var address = $('#dispatcher-destination').val();
-  $.ajax({
-    method: 'POST',
-    dataType: "json",
-    contentType: 'application/json',
+  fetch(`/api/v1/drivers/${driverId}/destination`, {
+    method: 'post',
     headers: {
-      'X-API-KEY': localStorage.api_key
+      'X-API-KEY': localStorage.api_key,
+      'Content-Type': 'application/json'
     },
-    url: '/api/v1/drivers/' + driver_id + '/destination',
-    data: JSON.stringify({
-     destination: address
-    }),
-    success: function(data){
-      if (data){
-        console.log(data);
-      }
-    },
+    body: JSON.stringify({
+      destination: address
+    })
   })
+  .then(response => response.json())
+  .then(data => console.log(data))
 }
 
 function findAddress(){
@@ -56,6 +51,7 @@ function getDrivers(){
 
 function createDriverList(driver_array){
   console.log(driver_array)
+  $('.drivers').empty();
   var json_converted_drivers = driver_array.map(function(driver){
     return JSON.parse(driver);
   });
@@ -76,9 +72,9 @@ $('#dispatcher-destination').keydown(function(e){
   }
 })
 
-$(document).on('click', ".driver-button", function(event){
+$('.drivers').on('click', ".driver-button", function(event){
   driver_id = $(this).val();
   setAddress(driver_id);
 });
 
-// setInterval(getDrivers, 10000);
+setInterval(getDrivers, 10000);
