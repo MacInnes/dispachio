@@ -12,6 +12,7 @@ function setAddress(driverId){
   })
   .then(response => response.json())
   .then(data => console.log(data))
+  // send a message to dispatch that the location was sent properly on success
 }
 
 function findAddress(){
@@ -50,7 +51,6 @@ function getDrivers(){
 }
 
 function createDriverList(driver_array){
-  console.log(driver_array)
   $('.drivers').empty();
   var json_converted_drivers = driver_array.map(function(driver){
     return JSON.parse(driver);
