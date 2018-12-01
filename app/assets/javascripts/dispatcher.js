@@ -44,25 +44,35 @@ function findAddress(){
 }
 
 function getDrivers(){
-  $.ajax({
-    dataType: 'json',
-    headers: {
-      'X-API-KEY': localStorage.api_key
-    },
-    async: false,
-    url: '/api/v1/drivers',
-    success: function(data){
-      createDriverList(data);
-    }
+  fetch('/api/v1/drivers', {
+    headers: {'Content-Type': 'application/json',
+              'X-API-KEY': localStorage.api_key }
   })
+  .then(response => response.json())
+  .then(drivers => createDriverList(drivers))
+  .catch(error => console.error(error))
 }
+//
+// function getDrivers(){
+//   $.ajax({
+//     dataType: 'json',
+//     headers: {
+//       'X-API-KEY': localStorage.api_key
+//     },
+//     async: false,
+//     url: '/api/v1/drivers',
+//     success: function(data){
+//       createDriverList(data);
+//     }
+//   })
+// }
 
 function createDriverList(driver_array){
   var json_converted_drivers = driver_array.map(function(driver){
     return JSON.parse(driver);
   });
   json_converted_drivers.forEach(function(driver){
-    $('.drivers').append("<div><button class='driver-button' type='button' value='" + driver.data.id + "'>" + driver.data.attributes.username + "</button></div>")
+    $('.drivers').append(`<div><button class='driver-button' type='button' value='${driver.data.id}'>${driver.data.attributes.username}</button></div>`)
   })
 }
 

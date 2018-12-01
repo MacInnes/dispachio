@@ -15,25 +15,6 @@ ActiveRecord::Schema.define(version: 2018_11_27_010432) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "dispatchers", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
-    t.string "api_key"
-  end
-
-  create_table "drivers", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
-    t.string "destination"
-    t.string "lat"
-    t.string "long"
-    t.string "api_key"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
