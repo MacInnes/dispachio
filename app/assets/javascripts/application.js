@@ -28,7 +28,6 @@ $(document).ready(function(){
     var email = $('#email').val();
     var password = $('#password').val();
     var role = $('input[name=role]:checked').val();
-    console.log('Username: ', username)
     fetch('/api/v1/users', {
       method: 'post',
       headers: { 'Content-Type': 'application/json'},
@@ -58,7 +57,6 @@ function navSetup(){
 }
 
 function setStorage(user_data){
-  console.log(user_data)
   localStorage.id = user_data.data.attributes.id
   localStorage.username = user_data.data.attributes.username
   localStorage.api_key = user_data.data.attributes.api_key
