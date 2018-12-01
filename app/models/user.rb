@@ -1,6 +1,7 @@
 require 'securerandom'
 
 class User < ApplicationRecord
+  validates :username, uniqueness: true
   has_secure_password
 
   enum role: ['driver', 'dispatcher']

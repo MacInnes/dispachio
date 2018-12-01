@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get '/register', to: 'register#new'
 
+  get '/login', to: 'login#new'
+
   get '/dispatcher/:id', to: 'dispatch#show'
 
   get '/driver/:id', to: 'driver#show'
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create]
+        post '/login', to: 'login#create'
         get '/drivers', to: 'driver#index'
         get '/drivers/:id', to: 'driver#show'
         post '/drivers/:id/destination', to: 'driver#update'
