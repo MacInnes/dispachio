@@ -20,7 +20,6 @@ class Api::V1::DriverController < ActionController::API
 
   def index
     if dispatcher?
-      recent_time = Time.now - 30
       drivers = User.where(['role = 0 and updated_at > ?', 1.minute.ago])
       serialized_drivers = drivers.map do |driver|
         DriverSerializer.new(driver).serialized_json
