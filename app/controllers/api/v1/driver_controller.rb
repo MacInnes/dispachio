@@ -30,6 +30,15 @@ class Api::V1::DriverController < ActionController::API
     end
   end
 
+  def show_location
+    if dispatcher?
+      driver = User.find(params[:id])
+      render json: DriverSerializer.new(driver).serialized_json
+    else
+      render status: 403, json: {message: "Unauthorized"}
+    end
+  end
+
   def update_location
     if current_driver?
       @user.update(lat: params[:lat], long: params[:long])

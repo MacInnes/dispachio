@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         get '/drivers', to: 'driver#index'
         get '/drivers/:id', to: 'driver#show'
         post '/drivers/:id/destination', to: 'driver#update'
+        get '/drivers/:id/location', to: 'driver#show_location'
         post '/drivers/:id/location', to: 'driver#update_location'
         get '/dispatchers/:id', to: 'dispatcher#show'
         post '/dispatchers/:id/destination', to: 'dispatcher#update'

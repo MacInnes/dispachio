@@ -52,12 +52,33 @@ function getDrivers(){
 
 function createDriverList(driver_array){
   $('.drivers').empty();
+  $('.location').empty();
   var json_converted_drivers = driver_array.map(function(driver){
     return JSON.parse(driver);
   });
   json_converted_drivers.forEach(function(driver){
     $('.drivers').append(`<div><button class='driver-button' type='button' value='${driver.data.id}'>${driver.data.attributes.username}</button></div>`)
+    $('.location').append(`<div><button class='location-button' type='button' value='${driver.data.id}'>${driver.data.attributes.username}</button></div>`)
   })
+}
+
+function getLocation(id){
+  fetch(`/api/v1/drivers/${id}/location`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-KEY': localStorage.api_key
+    }
+  })
+    .then(response => response.json())
+    .then(driver => driverLocation(driver))
+    .catch(error => console.log(error))
+}
+
+function driverLocation(driver){
+  var lat = driver.data.attributes.lat
+  var long = driver.data.attributes.long
+  console.log('lat:', lat)
+  console.log('long:', long)
 }
 
 getDrivers();
@@ -76,5 +97,10 @@ $('.drivers').on('click', ".driver-button", function(event){
   driver_id = $(this).val();
   setAddress(driver_id);
 });
+
+$('.location').on('click', '.location-button', function(event){
+  driver_id = $(this).val();
+  getLocation(driver_id);
+})
 
 setInterval(getDrivers, 10000);
