@@ -35,8 +35,16 @@ function findAddress(){
 function renderAddress(address){
   var new_destination = address.data.attributes.formatted_destination
   var destination = address.data.attributes.destination
-  $('#dispatch-destination').text('Directions to ' + destination + ':')
+  $('#dispatch-destination').text(`'Map for ${destination}:`)
   $('#dispatcher-iframe').attr('src', new_destination)
+}
+
+function renderLocation(location){
+  console.log(location)
+  var current_location = location.data.attributes.formatted_location
+  var driver_name = location.data.attributes.username
+  $('#dispatch-destination').text(`Location of ${driver_name}: ${location.data.attributes.lat}, ${location.data.attributes.long}`)
+  $('#dispatcher-iframe').attr('src', current_location)
 }
 
 function getDrivers(){
@@ -70,15 +78,8 @@ function getLocation(id){
     }
   })
     .then(response => response.json())
-    .then(driver => driverLocation(driver))
+    .then(driver => renderLocation(driver))
     .catch(error => console.log(error))
-}
-
-function driverLocation(driver){
-  var lat = driver.data.attributes.lat
-  var long = driver.data.attributes.long
-  console.log('lat:', lat)
-  console.log('long:', long)
 }
 
 getDrivers();
