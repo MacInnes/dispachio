@@ -64,7 +64,7 @@ describe 'Driver' do
       long: '-104.9964355'
     }
 
-    patch "/api/v1/drivers/#{driver.id}/location", headers: headers, params: payload.to_json
+    post "/api/v1/drivers/#{driver.id}/location", headers: headers, params: payload.to_json
 
 
     expect(response.status).to eq(204)
@@ -91,7 +91,7 @@ describe 'Driver' do
       long: '-104.9964355'
     }
 
-    patch "/api/v1/drivers/#{driver_2.id}/location", headers: headers, params: payload.to_json
+    post "/api/v1/drivers/#{driver_2.id}/location", headers: headers, params: payload.to_json
 
 
     expect(response.status).to eq(403)
