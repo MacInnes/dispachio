@@ -1,9 +1,22 @@
 body {
+  background-color: #334A52;
+}
+
+.btn {
   background-color: #00BFE5;
+  color: white;
 }
 
 .navbar {
-  background-color: #C2F9FF;
+  background-color: #96AFB8;
+}
+
+.login-group {
+  margin-top: 5rem;
+}
+
+#login-btn, #register-btn {
+  margin: 2rem 0 2rem 0;
 }
 
 #logout-btn {

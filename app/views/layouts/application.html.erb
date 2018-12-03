@@ -12,16 +12,27 @@
 
   <body>
     <nav class="navbar">
-      <div class="container-fluid">
+      <div class="container-fluid start-screen">
         <div class="navbar-header">
           <h4 class="navbar-brand" id="dispachio-title">Dispachio</h4>
-          <a href="/register" type="button" id="register-btn" class="btn btn-primary register" role="button">Register</a>
-          <a href="/login" type="button" id="login-btn" class="btn btn-primary register" role="button">Login</a>
         </div>
         <h4 id="nav-username"></h4>
         <a href="/" type="button" id="logout-btn" class="btn btn-primary" role="button" >Logout</a>
       </div>
     </nav>
+    <div class="container-fluid login-group">
+      <div class="row justify-content-center">
+        <div class="col-md-auto">
+          <a href="/register" type="button" id="register-btn" class="btn register" role="button">Register</a>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-auto">
+          <a href="/login" type="button" id="login-btn" class="btn register" role="button">Login</a>
+        </div>
+      </div>
+    </div>
+
     <%= yield %>
   </body>
 </html>
