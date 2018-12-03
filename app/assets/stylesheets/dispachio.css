@@ -7,6 +7,7 @@ body {
 .btn {
   background-color: #00BFE5;
   color: white;
+  height: 10rem;
 }
 
 .navbar {
@@ -14,11 +15,12 @@ body {
 }
 
 .login-group {
-  margin-top: 5rem;
+  margin-top: 15%;
 }
 
 #login-btn, #register-btn {
   margin: 2rem 0 2rem 0;
+  font-size: 3rem;
 }
 
 #logout-btn {
