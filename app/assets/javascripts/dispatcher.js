@@ -61,7 +61,6 @@ function getDrivers(){
 function createDriverList(driver_array){
   $('.drivers').empty();
   $('.location').empty();
-  console.log(driver_array)
   var json_converted_drivers = driver_array.map(function(driver){
     return JSON.parse(driver);
   });
